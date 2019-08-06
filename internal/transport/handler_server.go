@@ -75,6 +75,7 @@ func NewServerHandlerTransport(w http.ResponseWriter, r *http.Request, stats sta
 		stats:          stats,
 	}
 
+	fmt.Println("NewServerHandlerTransport with disabled grpc-timeout")
 	// if v := r.Header.Get("grpc-timeout"); v != "" {
 	// 	to, err := decodeTimeout(v)
 	// 	if err != nil {
