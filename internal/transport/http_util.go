@@ -376,11 +376,12 @@ func (d *decodeState) processHeaderField(f hpack.HeaderField) {
 		}
 		d.data.statusGen = status.FromProto(s)
 	case "grpc-timeout":
-		d.data.timeoutSet = true
-		var err error
-		if d.data.timeout, err = decodeTimeout(f.Value); err != nil {
-			d.data.grpcErr = status.Errorf(codes.Internal, "transport: malformed time-out: %v", err)
-		}
+		fmt.Println("grpc-timeout header found, skipping timeoutSet")
+		//d.data.timeoutSet = true
+		//var err error
+		//if d.data.timeout, err = decodeTimeout(f.Value); err != nil {
+		//	d.data.grpcErr = status.Errorf(codes.Internal, "transport: malformed time-out: %v", err)
+		//}
 	case ":path":
 		d.data.method = f.Value
 	case ":status":
