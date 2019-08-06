@@ -75,14 +75,14 @@ func NewServerHandlerTransport(w http.ResponseWriter, r *http.Request, stats sta
 		stats:          stats,
 	}
 
-	if v := r.Header.Get("grpc-timeout"); v != "" {
-		to, err := decodeTimeout(v)
-		if err != nil {
-			return nil, status.Errorf(codes.Internal, "malformed time-out: %v", err)
-		}
-		st.timeoutSet = true
-		st.timeout = to
-	}
+	// if v := r.Header.Get("grpc-timeout"); v != "" {
+	// 	to, err := decodeTimeout(v)
+	// 	if err != nil {
+	// 		return nil, status.Errorf(codes.Internal, "malformed time-out: %v", err)
+	// 	}
+	// 	st.timeoutSet = true
+	// 	st.timeout = to
+	// }
 
 	metakv := []string{"content-type", contentType}
 	if r.Host != "" {
